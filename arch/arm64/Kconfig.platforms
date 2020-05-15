@@ -374,6 +374,12 @@ config MACH_XIAOMI_DUMMY
 	help
 	  A stub configuration that doesn't enable support for anything.
 
+config MACH_XIAOMI_E7
+        bool "E7 board"
+	select MACH_XIAOMI_MSM8953
+	help
+	  This enables support for Xiaomi Redmi 5 Plus / Note 5.
+
 endchoice
 
 endif
