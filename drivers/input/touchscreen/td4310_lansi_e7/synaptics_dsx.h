@@ -5,6 +5,7 @@
  *
  * Copyright (C) 2012 Alexandra Chin <alexandra.chin@tw.synaptics.com>
  * Copyright (C) 2012 Scott Lin <scott.lin@tw.synaptics.com>
+ * Copyright (C) 2018 XiaoMi, Inc.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,17 +35,13 @@
 #ifndef _SYNAPTICS_DSX_H_
 #define _SYNAPTICS_DSX_H_
 
-#ifdef CONFIG_MACH_XIAOMI_E7
-#define PLATFORM_DRIVER_NAME "synaptics_dsx_v21"
-#else
-#define PLATFORM_DRIVER_NAME "synaptics_dsx"
-#endif
-#define STYLUS_DRIVER_NAME "synaptics_dsx_stylus"
+#define PLATFORM_DRIVER_NAME "lansi_dsx_v21"
+#define STYLUS_DRIVER_NAME "synaptics_dsx_stylus_lansi"
 #define ACTIVE_PEN_DRIVER_NAME "synaptics_dsx_active_pen"
 #define PROXIMITY_DRIVER_NAME "synaptics_dsx_proximity"
 #define GESTURE_DRIVER_NAME "synaptics_dsx_gesture"
-#define I2C_DRIVER_NAME "synaptics_dsx_i2c"
-#define SPI_DRIVER_NAME "synaptics_dsx_spi"
+#define I2C_DRIVER_NAME "lansi_dsx_i2c"
+#define SPI_DRIVER_NAME "lansi_dsx_spi"
 
 /*
  * struct synaptics_dsx_button_map - button map
@@ -89,18 +86,14 @@ struct synaptics_dsx_board_data {
 	bool x_flip;
 	bool y_flip;
 	bool swap_axes;
-#ifdef CONFIG_MACH_XIAOMI_E7
 	int irq;
-#endif
 	int irq_gpio;
 	int irq_on_state;
 	int power_gpio;
 	int power_on_state;
 	int reset_gpio;
 	int reset_on_state;
-#ifdef CONFIG_MACH_XIAOMI_E7
 	int display_reset_gpio;
-#endif
 	int max_y_for_2d;
 	unsigned long irq_flags;
 	unsigned short i2c_addr;
