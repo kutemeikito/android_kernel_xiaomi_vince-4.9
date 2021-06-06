@@ -741,6 +741,12 @@ void tipc_sk_mcast_rcv(struct net *net, struct sk_buff_head *arrvq,
 		spin_lock_bh(&inputq->lock);
 		if (skb_peek(arrvq) == skb) {
 			skb_queue_splice_tail_init(&tmpq, inputq);
+<<<<<<< HEAD
+=======
+			/* Decrease the skb's refcnt as increasing in the
+			 * function tipc_skb_peek
+			 */
+>>>>>>> 502befe17d05... Merge branch 'aosp-common/upstream-linux-4.9.y' of https://source.codeaurora.org/quic/la/kernel/msm into master
 			kfree_skb(__skb_dequeue(arrvq));
 		}
 		spin_unlock_bh(&inputq->lock);

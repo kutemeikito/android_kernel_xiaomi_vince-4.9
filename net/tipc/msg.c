@@ -140,18 +140,19 @@ int tipc_buf_append(struct sk_buff **headbuf, struct sk_buff **buf)
 	if (fragid == FIRST_FRAGMENT) {
 		if (unlikely(head))
 			goto err;
+<<<<<<< HEAD
 		if (unlikely(skb_unclone(frag, GFP_ATOMIC)))
+=======
+		*buf = NULL;
+		if (skb_has_frag_list(frag) && __skb_linearize(frag))
+			goto err;
+		frag = skb_unshare(frag, GFP_ATOMIC);
+		if (unlikely(!frag))
+>>>>>>> 502befe17d05... Merge branch 'aosp-common/upstream-linux-4.9.y' of https://source.codeaurora.org/quic/la/kernel/msm into master
 			goto err;
 		head = *headbuf = frag;
 		*buf = NULL;
 		TIPC_SKB_CB(head)->tail = NULL;
-		if (skb_is_nonlinear(head)) {
-			skb_walk_frags(head, tail) {
-				TIPC_SKB_CB(head)->tail = tail;
-			}
-		} else {
-			skb_frag_list_init(head);
-		}
 		return 0;
 	}
 
