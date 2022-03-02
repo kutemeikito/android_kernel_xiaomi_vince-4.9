@@ -548,10 +548,16 @@ static int ion_handle_add(struct ion_client *client, struct ion_handle *handle)
 	return 0;
 }
 
+<<<<<<< HEAD
 static struct ion_handle *__ion_alloc(
 		struct ion_client *client, size_t len,
 		size_t align, unsigned int heap_id_mask,
 		unsigned int flags, bool grab_handle)
+=======
+struct ion_handle *__ion_alloc(struct ion_client *client, size_t len,
+			       size_t align, unsigned int heap_id_mask,
+			       unsigned int flags, bool grab_handle)
+>>>>>>> 9279031d74f8fe8760ce32ac527bc4658b578926
 {
 	struct ion_handle *handle;
 	struct ion_device *dev = client->dev;
